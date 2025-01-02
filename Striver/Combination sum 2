@@ -1,0 +1,56 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+#define all(x) (x).begin(), (x).end()
+#define allr(x) (x).rbegin(), (x).rend()
+#define gsize(x) (int)((x).size())
+// typedef long long int;
+#define endl '\n'
+bool comparePairs(const pair<int, int> &a, const pair<int, int> &b)
+{
+    if (a.first != b.first)
+        return a.first > b.first;
+    return a.second < b.second;
+}
+#define optimize()                \
+    ios_base::sync_with_stdio(0); \
+    cin.tie(0);                   \
+    cout.tie(0);
+// const int mod = 1e10 + 7;
+
+void unqCandidates(vector<int> &v, int low, vector<int> &arr, int sum)
+{
+
+    if (sum == 0)
+    {
+        for (int i = 0; i < gsize(arr); i++)
+        {
+            cout << arr[i] << ' ';
+        }
+        cout << endl;
+        return;
+    }
+
+    for (int i = low; i < gsize(v); i++)
+    {
+        if (i > low && v[i] == v[i - 1])
+            continue;
+        if (v[i] > sum)
+            break;
+        arr.push_back(v[i]);
+        unqCandidates(v, i + 1, arr, sum - v[i]);
+        arr.pop_back();
+    }
+}
+
+signed main()
+{
+    optimize();
+    vector<int> v{10, 1, 2, 7, 6, 1, 5};
+    sort(all(v));
+    int t = 8;
+    vector<int> arr;
+    unqCandidates(v, 0, arr, t);
+
+    return 0;
+}
