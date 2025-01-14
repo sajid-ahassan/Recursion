@@ -26,6 +26,15 @@ int po(int a, int b)
     return a * po(a, b - 1);
 }
 
+// int po(int a, int b) // Batter TC
+// {
+//     if (b == 0)
+//         return 1;
+//     int temp = po(a, b / 2);
+//     if (b & 1)
+//         return temp * temp * a;
+//     return temp*temp;
+// }
 signed main()
 {
     optimize();
