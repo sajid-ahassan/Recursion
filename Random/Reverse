@@ -1,0 +1,38 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+#define all(x) ++(x).begin(), (x).end()
+#define allr(x) (x).rbegin(), (x).rend()
+#define gsize(x) (int)((x).size())
+#define int long long
+
+#define endl '\n'
+bool comparePairs(const pair<int, int> &a, const pair<int, int> &b)
+{
+    if (a.first != b.first)
+        return a.first > b.first;
+    return a.second < b.second;
+}
+#define optimize()                \
+    ios_base::sync_with_stdio(0); \
+    cin.tie(0);                   \
+    cout.tie(0);
+const int mod = 1e9;
+
+void rev(string &str, int s, int e)
+{
+    if (s >= e)
+        return;
+    swap(str[s], str[e]);
+    rev(str, s + 1, e - 1);
+}
+signed main()
+{
+    optimize();
+    string str;
+    cin >> str;
+    rev(str,0,gsize(str)-1);
+    cout << str << endl;
+
+    return 0;
+}
