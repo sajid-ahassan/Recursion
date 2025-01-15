@@ -45,3 +45,33 @@ signed main()
 
     return 0;
 }
+
+
+
+
+
+// void sub(string &str, vector<string> &st, string stt, int s, int e)
+// {
+//     if (s > e)
+//     {
+//         st.push_back(stt);
+//         return;
+//     }
+//     stt += str[s];
+//     sub(str, st, stt, s + 1, e);
+//     stt.pop_back();
+//     sub(str, st, stt, s + 1, e);
+// }
+// signed main()
+// {
+//     optimize();
+//     string str;
+//     cin >> str;
+//     string strr;
+//     vector<string> st;
+//     sub(str, st, strr, 0, gsize(str) - 1);
+//     for (auto it : st)
+//         cout << "{" << it << "}" << endl;
+
+//     return 0;
+// }
