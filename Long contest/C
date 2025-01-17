@@ -1,0 +1,50 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+#define all(x) ++(x).begin(), (x).end()
+#define allr(x) (x).rbegin(), (x).rend()
+#define gsize(x) (int)((x).size())
+#define int long long
+
+// #define endl '\n'
+bool comparePairs(const pair<int, int> &a, const pair<int, int> &b)
+{
+    if (a.first != b.first)
+        return a.first > b.first;
+    return a.second < b.second;
+}
+#define optimize()                \
+    ios_base::sync_with_stdio(0); \
+    cin.tie(0);                   \
+    cout.tie(0);
+const int mod = 1e9;
+void check(int m, int num, bool &flag)
+{
+    if (num >= m)
+    {
+        if (num == m)
+            flag = true;
+        return;
+    }
+    check(m, num * 10, flag);
+    check(m, num * 20, flag);
+}
+signed main()
+{
+    optimize();
+    int n;
+    cin >> n;
+    while (n--)
+    {
+        int m;
+        cin >> m;
+        bool flag = false;
+        check(m,1,flag);
+        if (flag)
+            cout << "YES" << endl;
+        else
+            cout << "NO" << endl;
+    }
+
+    return 0;
+}
