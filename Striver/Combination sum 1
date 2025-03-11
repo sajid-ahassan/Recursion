@@ -1,0 +1,65 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+#define all(x) (x).begin(), (x).end()
+#define allr(x) (x).rbegin(), (x).rend()
+#define gsize(x) (int)((x).size())
+#define int long long
+#define endl '\n'
+#define optimize()                \
+    ios_base::sync_with_stdio(0); \
+    cin.tie(0);                   \
+    cout.tie(0);
+bool comparePairs(const pair<int, int> &a, const pair<int, int> &b)
+{
+    if (a.first != b.first)
+        return a.first > b.first;
+    return a.second < b.second;
+}
+int mod = 1e6 + 9;
+
+void solve()
+{
+}
+void sum(vector<int> &arr, vector<vector<int>> &ans, vector<int> &an, int val, int n, int ind)
+{
+    if (ind == n)
+    {
+        if (val == 0)
+        {
+            ans.push_back(an);
+        }
+        return;
+    }
+    if(arr[ind]<=val)
+    {
+        an.push_back(arr[ind]);
+        sum(arr,ans,an,val-arr[ind],n,ind);
+        an.pop_back();
+    }
+    sum(arr,ans,an,val,n,ind+1);
+
+}
+signed main()
+{
+    optimize();
+    int n, val;
+    cin >> n >> val;
+    vector<int> arr(n);
+    for (int i = 0; i < n; i++)
+    {
+        cin >> arr[i];
+    }
+    vector<vector<int>> ans;
+    vector<int> an;
+    sum(arr, ans, an, val, n, 0);
+    for (auto it : ans)
+    {
+        for (auto item : it)
+        {
+            cout << item << ' ';
+        }
+        cout << endl;
+    }
+    return 0;
+}
